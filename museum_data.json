@@ -1,0 +1,146 @@
+{
+    "title": "",
+    "description": "Наш музей, расположенный в стенах школы № 367, хранит богатую историю становления и развития образования в одном из старейших районов Санкт-Петербурга. Здесь вы сможете познакомиться с уникальными экспонатами, архивными документами, фотографиями и личными вещами педагогов и учеников, которые внесли вклад в просвещение Фрунзенского района.",
+    "content": [
+        {
+            "type": "text",
+            "id": "text_1",
+            "photos": [],
+            "content": "В музее собрана уникальная коллекция фотографий и документов, которые помогают воссоздать атмосферу тех лет. "
+        },
+        {
+            "type": "modal",
+            "id": "modal_2",
+            "photos": [
+                {
+                    "image": "https://i.postimg.cc/rpQVmYFG/image.jpg",
+                    "caption": "зал музея "
+                },                  
+                
+                {
+                "image": "https://i.postimg.cc/FRkHBVNj/image.jpg",
+                "caption": "старое здание школыы "
+                },
+                {
+                    "image": "https://i.postimg.cc/kMbgqs8Z/10-367-1940-1941.jpg",
+                    "caption": "педогогический состав школы 1940-1941"
+                },
+                {
+                    "image": "https://i.postimg.cc/DzvgL51y/10.jpg",
+                    "caption": "выпускники 10 класса блокадной школы"
+                },
+                {
+                    "image": "https://i.postimg.cc/VsJcXWFR/image.jpg",
+                    "caption": "Совет ветеранов Фрунзенского роно"
+                },
+                {
+                    "image": "https://i.postimg.cc/J0GYJKVB/image.jpg",
+                    "caption": "Памятная табличка"
+                }
+            ],
+            "title": "Фотогалерея",
+            "content": "<p>Содержимое модального окна</p>",
+            "button_text": "Фотографии нашего музея ",
+            "button_class": "btn-modal"
+        },
+        {
+            "type": "text",
+            "id": "text_3",
+            "photos": [],
+            "content": "Школа №367 одна из немногих школ, которая продолжала работать в блокадном Ленинграде. Музей школы №367 предлагает экскурсии для учеников и всех, кто интересуется историей блокадного Ленинграда. Наши экскурсоводы расскажут о жизни школы в годы войны, о подвигах учителей и учеников, о том, как школа стала символом надежды. С самого основания нашего музея его главными экскурсоводами были дети, ведь лучшие проводники в мир истории — это сами школьники. И вот уже, которое поколение наши ученики передают и принимают эстафету эксурсовода нашего музея. Ниже несколько  фильмов/экскурсий нашего музея "
+        },
+        {
+            "type": "modal",
+            "id": "modal_4",
+            "content": [
+                {
+                    "type": "modal",
+                    "id": "modal_4",
+                    "content": [
+                        {
+                            "type": "modal",
+                            "id": "modal_4",
+                            "content": [
+                                {
+                                    "video": "<div style='position:relative;padding-bottom:56.25%;height:0;overflow:hidden;'><iframe style='position:absolute;top:0;left:0;width:100%;height:100%;' src='https://www.youtube.com/embed/X_2mTrvo2Vg?rel=0' frameborder='0' allowfullscreen></iframe></div>",
+                                    "caption": "Будни блокадного школьника"
+                                  },
+                                  {
+                                    "video": "<div style='position:relative;padding-bottom:56.25%;height:0;overflow:hidden;'><iframe style='position:absolute;top:0;left:0;width:100%;height:100%;' src='https://www.youtube.com/embed/ydLzTGkbALE?rel=0' frameborder='0' allowfullscreen></iframe></div>",
+                                    "caption": "История народного образования: от прошлого к настоящему"
+                                  }
+
+                              ],
+                            "title": "Экскурсия",
+                            "button_text": "Экскурсии",
+                            "button_class": "btn-modal"
+                          }
+                    ],
+                    "title": "Экскурсия",
+                    "button_text": "Экскурсии",
+                    "button_class": "btn-modal"
+                  }
+            ],
+            "title": "Экскурсия",
+            "button_text": "Экскурсии",
+            "button_class": "btn-modal"
+          },
+        {
+            "type": "text",
+            "id": "text_5",
+            "photos": [],
+            "content": "В самые суровые дни блокады Ленинграда, когда город жил под свист снарядов и ледяной голод, школа № 367 не замолчала. Её учителя, обессиленные, но непокорённые, продолжали вести уроки в промёрзших классах и беречь своих учеников. Ниже мы расскажем о героях-учителях школы № 367, чьи имена должны остаться в памяти поколений."
+        },
+        {
+            "type": "modal",
+            "id": "modal_6",
+            "photos": [
+                {
+                    "image": "https://i.postimg.cc/26d9cWq0/367-20.jpg",
+                    "caption": "Каменецкий Я.М. директор 367 школы."     
+                },               
+                {   
+                    "image": "https://i.postimg.cc/L5bBpMWJ/image.jpg",
+                    "caption": "Васильев Н.С. Фрунзенского роно"
+                }, 
+                {
+                    "image": "https://i.postimg.cc/ZnjGrjq8/image.jpg",
+                    "caption": "Адрианова А.Е. учительница русского языка и Литературы."                    
+                },
+
+                {
+                    "image": "https://i.postimg.cc/VsJcXWFR/image.jpg",
+                    "caption": "Совет ветеранов Фрунзенского роно"
+                },
+                {
+                    "image": "https://i.postimg.cc/50DKcwd8/1985.jpg",
+                    "caption": "Горюнкова Н.М."
+                },
+                {
+                    "image": "https://i.postimg.cc/zfBxVdqn/image.jpg",
+                    "caption": "Денисова Т.Я."
+                },
+                {
+                    "image": "https://i.postimg.cc/C5HGvDFh/1954-56.jpg",
+                    "caption": "Дорогуш Л.А."
+                },
+                {
+                    "image": "https://i.postimg.cc/Qx818F87/001.jpg",
+                    "caption": "Окунева П.С."
+                },
+                {
+                    "image": "https://i.postimg.cc/3wtJZwMs/image.jpg",
+                    "caption": "Толмачёва О.А."
+                }
+            ],
+            "title": "Учиителя блокадники",
+            "content": "Эти педагоги стали не просто наставниками — они были опорой, защитниками и символом несгибаемости ленинградского духа.",
+            "button_text": "Учителя блокадной школы",
+            "button_class": "btn-modal"
+        }
+    ],
+    "exhibits": [],
+    "photos": [],
+    "tours": [],
+    "modals": []
+}
