@@ -57,7 +57,7 @@ def save_data(data):
 @app.route("/")
 def home():
     data = load_data()
-    return render_template("article.html", article=data)
+    return render_template("index.html", article=data)
 
 @app.route("/admin", methods=['GET', 'POST'])
 def admin():
