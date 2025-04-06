@@ -1,114 +1,77 @@
-// Здесь "данные", которые раньше загружались через Flask/EJS.
-// Для примера взят тот же формат, что в main.py и index.html
-const data = {
-  title: "Школьный музей Школы №367",
-  description: "Школьный музей школы №367 — это не просто место...",
-  content: [
-    {
-      type: "text",
-      id: "text_1",
-      content: "Пример текстового блока",
-      photos: [
-        {
-          image: "https://via.placeholder.com/400x300", // замените на свой путь
-          caption: "Пример фотографии"
-        }
-      ]
-    },
-    {
-      type: "modal",
-      id: "modal_1",
-      title: "Пример модального окна",
-      content: "<p>Содержимое модального окна</p>",
-      button_text: "Открыть модал",
-      button_class: "btn-modal",
-      photos: [
-        {
-          image: "https://via.placeholder.com/200x150",
-          caption: "Фото внутри модального окна"
-        }
-      ]
-    }
-    // Можно добавлять другие блоки по аналогии
-  ]
-};
-
-// Функция для инициализации страницы: подставляем заголовок, описание и генерируем контент
-function initPage() {
-  // Заголовок и описание
-  const titleEl = document.getElementById("article-title");
-  const descEl = document.getElementById("article-description");
-  titleEl.textContent = data.title || "Без заголовка";
-  descEl.textContent = data.description || "Описание отсутствует";
-
-  // Рендерим основной контент (текстовые блоки и модальные окна)
-  const contentContainer = document.getElementById("content-blocks");
-
-  data.content.forEach((item, index) => {
-    if (item.type === "text") {
-      renderTextBlock(item, contentContainer);
-    } else if (item.type === "modal") {
-      renderModalBlock(item, contentContainer, index);
-    }
-  });
+// Функция для загрузки JSON файла
+async function fetchMuseumData() {
+  try {
+      const response = await fetch('museum_data.json');
+      if (!response.ok) {
+          throw new Error('Не удалось загрузить данные музея');
+      }
+      return await response.json();
+  } catch (error) {
+      console.error('Ошибка загрузки данных:', error);
+      // Возвращаем данные по умолчанию в случае ошибки
+      return {
+          title: "Школьный музей Школы №367",
+          description: "Не удалось загрузить данные. Пожалуйста, попробуйте позже.",
+          content: []
+      };
+  }
 }
 
-// Рендер текстового блока
+// Функция для отображения текстового блока
 function renderTextBlock(item, container) {
   const textBlock = document.createElement("div");
   textBlock.classList.add("text-content");
   textBlock.innerHTML = item.content || "Текст отсутствует";
 
-  // Если есть фотографии, добавим их
   if (item.photos && item.photos.length > 0) {
-    item.photos.forEach((photo) => {
-      const photoContainer = document.createElement("div");
-      photoContainer.classList.add("photo-container");
+      item.photos.forEach((photo) => {
+          const photoContainer = document.createElement("div");
+          photoContainer.classList.add("photo-container");
 
-      const imgEl = document.createElement("img");
-      imgEl.src = photo.image || "images/default.jpg";
-      imgEl.alt = photo.caption || "";
+          const imgEl = document.createElement("img");
+          imgEl.src = photo.image || "images/default.jpg";
+          imgEl.alt = photo.caption || "";
 
-      photoContainer.appendChild(imgEl);
+          photoContainer.appendChild(imgEl);
 
-      if (photo.caption) {
-        const captionEl = document.createElement("p");
-        captionEl.classList.add("photo-caption");
-        captionEl.textContent = photo.caption;
-        photoContainer.appendChild(captionEl);
-      }
+          if (photo.caption) {
+              const captionEl = document.createElement("p");
+              captionEl.classList.add("photo-caption");
+              captionEl.textContent = photo.caption;
+              photoContainer.appendChild(captionEl);
+          }
 
-      textBlock.appendChild(photoContainer);
-    });
+          textBlock.appendChild(photoContainer);
+      });
   }
 
   container.appendChild(textBlock);
 }
 
-// Рендер блока с модальным окном
+// Функция для отображения блока с модальным окном
 function renderModalBlock(item, container, index) {
-  // Создаём кнопку
+  // Создаем кнопку
   const button = document.createElement("button");
   button.classList.add("button");
   if (item.button_class) {
-    button.classList.add(item.button_class);
+      button.classList.add(item.button_class);
   }
   button.textContent = item.button_text || "Открыть";
 
   // Генерируем уникальный ID для модального окна
   const modalId = "modal-" + index;
 
-  // При клике на кнопку – показываем модальное окно
+  // При клике на кнопку показываем модальное окно
   button.addEventListener("click", () => {
-    const modalEl = document.getElementById(modalId);
-    if (modalEl) {
-      modalEl.style.display = "block";
-    }
+      const modalEl = document.getElementById(modalId);
+      if (modalEl) {
+          modalEl.style.display = "block";
+      }
   });
 
   container.appendChild(button);
 
-  // Создаём само модальное окно
+  // Создаем само модальное окно
   const modal = document.createElement("div");
   modal.classList.add("modal");
   modal.id = modalId;
@@ -121,7 +84,7 @@ function renderModalBlock(item, container, index) {
   closeSpan.classList.add("close-modal");
   closeSpan.innerHTML = "&times;";
   closeSpan.addEventListener("click", () => {
-    modal.style.display = "none";
+      modal.style.display = "none";
   });
 
   modalContent.appendChild(closeSpan);
@@ -132,50 +95,96 @@ function renderModalBlock(item, container, index) {
   modalContent.appendChild(h2);
 
   // Основное содержимое
-  // item.content может содержать HTML, потому что в исходном EJS/Flask
-  // иногда передавался HTML. Чтобы вставить HTML, используем innerHTML:
   const contentDiv = document.createElement("div");
   contentDiv.innerHTML = item.content || "<p>Содержимое модального окна</p>";
   modalContent.appendChild(contentDiv);
 
+  // Обработка вложенного контента (например, видео)
+  if (Array.isArray(item.content)) {
+      item.content.forEach(contentItem => {
+          if (contentItem.video) {
+              const videoContainer = document.createElement("div");
+              videoContainer.innerHTML = contentItem.video;
+              modalContent.appendChild(videoContainer);
+              
+              if (contentItem.caption) {
+                  const captionEl = document.createElement("p");
+                  captionEl.classList.add("photo-caption");
+                  captionEl.textContent = contentItem.caption;
+                  modalContent.appendChild(captionEl);
+              }
+          }
+      });
+  }
+
   // Фотографии в модальном окне
   if (item.photos && item.photos.length > 0) {
-    const modalPhotos = document.createElement("div");
-    modalPhotos.classList.add("modal-photos");
+      const modalPhotos = document.createElement("div");
+      modalPhotos.classList.add("modal-photos");
 
-    item.photos.forEach((photo) => {
-      const photoContainer = document.createElement("div");
-      photoContainer.classList.add("photo-container");
+      item.photos.forEach((photo) => {
+          const photoContainer = document.createElement("div");
+          photoContainer.classList.add("photo-container");
 
-      const imgEl = document.createElement("img");
-      imgEl.src = photo.image || "images/default.jpg";
-      imgEl.alt = photo.caption || "";
+          const imgEl = document.createElement("img");
+          imgEl.src = photo.image || "images/default.jpg";
+          imgEl.alt = photo.caption || "";
 
-      photoContainer.appendChild(imgEl);
+          photoContainer.appendChild(imgEl);
 
-      if (photo.caption) {
-        const captionEl = document.createElement("p");
-        captionEl.classList.add("photo-caption");
-        captionEl.textContent = photo.caption;
-        photoContainer.appendChild(captionEl);
-      }
+          if (photo.caption) {
+              const captionEl = document.createElement("p");
+              captionEl.classList.add("photo-caption");
+              captionEl.textContent = photo.caption;
+              photoContainer.appendChild(captionEl);
+          }
 
-      modalPhotos.appendChild(photoContainer);
-    });
+          modalPhotos.appendChild(photoContainer);
+      });
 
-    modalContent.appendChild(modalPhotos);
+      modalContent.appendChild(modalPhotos);
   }
 
   modal.appendChild(modalContent);
   container.appendChild(modal);
 
-  // Закрытие модального окна при клике вне контента (необязательно)
+  // Закрытие модального окна при клике вне контента
   window.addEventListener("click", (event) => {
-    if (event.target === modal) {
-      modal.style.display = "none";
-    }
+      if (event.target === modal) {
+          modal.style.display = "none";
+      }
   });
 }
 
-// После загрузки страницы вызываем initPage()
+// Основная функция инициализации страницы
+async function initPage() {
+  // Показываем индикатор загрузки
+  const contentContainer = document.getElementById("content-blocks");
+  contentContainer.innerHTML = '<div class="loading">Загрузка данных музея...</div>';
+
+  // Загружаем данные
+  const data = await fetchMuseumData();
+
+  // Обновляем заголовок и описание
+  document.getElementById("article-title").textContent = data.title || "Школьный музей Школы №367";
+  document.getElementById("article-description").textContent = data.description || "";
+
+  // Очищаем контейнер перед добавлением нового контента
+  contentContainer.innerHTML = "";
+
+  // Рендерим контент
+  if (data.content && data.content.length > 0) {
+      data.content.forEach((item, index) => {
+          if (item.type === "text") {
+              renderTextBlock(item, contentContainer);
+          } else if (item.type === "modal") {
+              renderModalBlock(item, contentContainer, index);
+          }
+      });
+  } else {
+      contentContainer.innerHTML = '<div class="no-data">Нет данных для отображения</div>';
+  }
+}
+
+// Запускаем инициализацию после загрузки DOM
 document.addEventListener("DOMContentLoaded", initPage);
