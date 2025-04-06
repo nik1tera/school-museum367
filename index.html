@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= article.title || 'Без заголовка' %></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Музей</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -99,81 +99,35 @@
         .button:hover {
             background-color: #2980b9;
         }
-        
+        /* Фоновая шапка, как в исходном index.html */
         h1 {
             text-align: center;
             height: 200px;
             color: #000000;
-            background-image: url(https://kanoner.com/pics/2016/03/tambovskaja-ulyca-17-dvor.jpg),  
-                              url(https://sun9-32.userapi.com/impf/c628620/v628620645/28cd5/b9JPCApv2P8.jpg?size=604x453&quality=96&sign=de2f70c7378e3b43419a9a7be4b1a894&type=album),
-                              url(https://i.postimg.cc/zv907Vyp/image.jpg);
+            background-image: url(https://kanoner.com/pics/2016/03/tambovskaja-ulyca-17-dvor.jpg),
+            url(https://sun9-32.userapi.com/impf/c628620/v628620645/28cd5/b9JPCApv2P8.jpg?size=604x453&quality=96&sign=de2f70c7378e3b43419a9a7be4b1a894&type=album),
+            url(https://i.postimg.cc/zv907Vyp/image.jpg);
             background-repeat: no-repeat;
             background-size: 30% 100%, 30% 100%, 20% 100%;
-            background-position-x: left, right, center; 
-        }   
+            background-position-x: left, right, center;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1><%= article.title || 'Без заголовка' %></h1>
-        
-        <div class="content-wrapper">
-            <div class="text-content">
-                <%= article.description || 'Описание отсутствует' %>
-            </div>
-            
-            <% if (article.content) { %>
-                <% article.content.forEach(function(item, index) { %>
-                    <% if (item.type === 'text') { %>
-                        <div class="text-content">
-                            <%= item.content || 'Текст отсутствует' %>
-                            <% if (item.photos) { %>
-                                <% item.photos.forEach(function(photo) { %>
-                                    <div class="photo-container">
-                                        <img src="<%= photo.image || 'images/default.jpg' %>" 
-                                             alt="<%= photo.caption || '' %>">
-                                        <% if (photo.caption) { %>
-                                            <p class="photo-caption"><%= photo.caption %></p>
-                                        <% } %>
-                                    </div>
-                                <% }); %>
-                            <% } %>
-                        </div>
-                    
-                    <% } else if (item.type === 'modal') { %>
-                        <button class="button <%= item.button_class || '' %>" 
-                                onclick="document.getElementById('modal-<%= index %>').style.display='block'">
-                            <%= item.button_text || 'Открыть' %>
-                        </button>
-                        
-                        <div id="modal-<%= index %>" class="modal">
-                            <div class="modal-content">
-                                <span class="close-modal" 
-                                      onclick="document.getElementById('modal-<%= index %>').style.display='none'">
-                                    &times;
-                                </span>
-                                <h2><%= item.title || 'Модальное окно' %></h2>
-                                <div><%- item.content || '<p>Содержимое модального окна</p>' %></div>
-                                
-                                <% if (item.photos) { %>
-                                    <div class="modal-photos">
-                                        <% item.photos.forEach(function(photo) { %>
-                                            <div class="photo-container">
-                                                <img src="<%= photo.image || 'images/default.jpg' %>" 
-                                                     alt="<%= photo.caption || '' %>">
-                                                <% if (photo.caption) { %>
-                                                    <p class="photo-caption"><%= photo.caption %></p>
-                                                <% } %>
-                                            </div>
-                                        <% }); %>
-                                    </div>
-                                <% } %>
-                            </div>
-                        </div>
-                    <% } %>
-                <% }); %>
-            <% } %>
-        </div>
+<div class="container">
+    <!-- Заголовок и описание будут проставляться с помощью JS -->
+    <h1 id="article-title">Заголовок</h1>
+
+    <div class="content-wrapper">
+        <!-- Здесь будет описание и все текстовые/модальные блоки -->
+        <div id="article-description" class="text-content"></div>
+
+        <!-- Контейнер для вставки динамического контента (текста, фото, модальных окон) -->
+        <div id="content-blocks"></div>
     </div>
+</div>
+
+<!-- Подключаем скрипт, который всё «соберёт» -->
+<script src="main.js"></script>
 </body>
 </html>
