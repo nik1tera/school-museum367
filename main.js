@@ -166,7 +166,7 @@ async function initPage() {
   const data = await fetchMuseumData();
 
   // Обновляем заголовок и описание
-  document.getElementById("article-title").textContent = data.title || "Школьный музей Школы №367";
+  document.getElementById("article-title").textContent = data.title || "";
   document.getElementById("article-description").textContent = data.description || "";
 
   // Очищаем контейнер перед добавлением нового контента
