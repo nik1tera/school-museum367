@@ -110,18 +110,23 @@
         .button {
             display: inline-block;
             padding: 12px 24px;
-            background-color: #edf8ee;
-            color: white;
-            border: none;
+            background-color: #ffffff; /* Белый фон */
+            color: #000000; /* Черный текст */
+            border: 1px solid #e0e0e0; /* Добавил легкую границу для лучшей видимости */
             border-radius: 4px;
             font-size: 1em;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, border-color 0.3s;
             margin: 10px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Легкая тень для объема */
         }
+
         .button:hover {
-            background-color: #e8f3fa;
+            background-color: #f8f8f8; /* Слегка темнее при наведении */
+            border-color: #d0d0d0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15); /* Усиленная тень при наведении */
         }
+        
         h1 {
             text-align: center;
             height: 200px;
