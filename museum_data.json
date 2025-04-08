@@ -52,39 +52,21 @@
         {
             "type": "modal",
             "id": "modal_4",
-            "content": [
+            "videos": [
                 {
-                    "type": "modal",
-                    "id": "modal_4",
-                    "content": [
-                        {
-                            "type": "modal",
-                            "id": "modal_4",
-                            "content": [
-                                {
-                                    "video": "<div style='position:relative;padding-bottom:56.25%;height:0;overflow:hidden;'><iframe style='position:absolute;top:0;left:0;width:100%;height:100%;' src='https://www.youtube.com/embed/X_2mTrvo2Vg?rel=0' frameborder='0' allowfullscreen></iframe></div>",
-                                    "caption": "Будни блокадного  школьника"
-                                  },
-                                  {
-                                    "video": "<div style='position:relative;padding-bottom:56.25%;height:0;overflow:hidden;'><iframe style='position:absolute;top:0;left:0;width:100%;height:100%;' src='https://www.youtube.com/embed/ydLzTGkbALE?rel=0' frameborder='0' allowfullscreen></iframe></div>",
-                                    "caption": "История народного образования: от прошлого к настоящему"
-                                  }
-
-                              ],
-                            "title": "Экскурсия",
-                            "button_text": "Экскурсии",
-                            "button_class": "btn-modal"
-                          }
-                    ],
-                    "title": "Экскурсия",
-                    "button_text": "Экскурсии",
-                    "button_class": "btn-modal"
-                  }
+                    "embed": "<div style='position:relative;padding-bottom:56.25%;height:0;overflow:hidden;'><iframe style='position:absolute;top:0;left:0;width:100%;height:100%;' src='https://www.youtube.com/embed/X_2mTrvo2Vg?rel=0' frameborder='0' allowfullscreen></iframe></div>",
+                    "caption": "Будни блокадного школьника"
+                },
+                {
+                    "embed": "<div style='position:relative;padding-bottom:56.25%;height:0;overflow:hidden;'><iframe style='position:absolute;top:0;left:0;width:100%;height:100%;' src='https://www.youtube.com/embed/ydLzTGkbALE?rel=0' frameborder='0' allowfullscreen></iframe></div>",
+                    "caption": "История народного образования: от прошлого к настоящему"
+                }
             ],
-            "title": "Экскурсия",
+            "title": "Экскурсии",
+            "content": "<p>Видеоэкскурсии нашего музея</p>",
             "button_text": "Экскурсии",
             "button_class": "btn-modal"
-          },
+        },
         {
             "type": "text",
             "id": "text_5",
@@ -138,9 +120,5 @@
             "button_text": "Учителя блокадной школы",
             "button_class": "btn-modal"
         }
-    ],
-    "exhibits": [],
-    "photos": [],
-    "tours": [],
-    "modals": []
+    ]
 }
